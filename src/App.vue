@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <div id="header">
-      <h1>Libro de visitas</h1>
-      Tu mensaje: <input type="text" v-model="mensaje" placeholder="Inserte su mensaje..." />
-      <button @click="escribir()" >Escribir</button>
-    </div>
+    <header-app></header-app>
+    <input-app></input-app>
     <hr />
     <div id="contenido">
       <div id="mensaje" v-for="(item, index) in mensajes" :key="index">
@@ -15,15 +12,19 @@
 </template>
 
 <script>
-import web3 from './web3'
 import mensajes from './mensajes'
+import HeaderApp from '@/components/Header'
+import InputApp from '@/components/Input'
 
 export default {
   name: 'App',
+  components: {
+    HeaderApp,
+    InputApp
+  },
   data () {
     return {
       numeroMensajes: 0,
-      mensaje: '',
       mensajes: []
     }
   },
@@ -31,19 +32,6 @@ export default {
     this.getMensajes()
   },
   methods: {
-    async escribir () {
-      let creador = await web3.eth.getAccounts()
-      let _this = this
-      console.log(creador)
-      await mensajes.methods.escribirMensaje(this.mensaje).send({
-        from: creador[0]
-      }).then(function () {
-        _this.mensajes = []
-        _this.getMensajes()
-      }).catch(function (error) {
-        console.log(error)
-      })
-    },
     async getMensajes () {
       this.numeroMensajes = await mensajes.methods.contadorMensajes().call()
       console.log(this.numeroMensajes)
@@ -61,8 +49,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: #f6f5f6;
 }
 </style>

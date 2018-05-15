@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import '@/assets/styles.css'
+import 'babel-polyfill'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
