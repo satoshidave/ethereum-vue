@@ -19,13 +19,19 @@ export default {
   name: 'input-app',
   data () {
     return {
-      mensaje: ''
+      mensaje: '',
+      msgError: false
     }
   },
   methods: {
     async escribir () {
-      let creador = await web3.eth.getAccounts()
-      this.$store.dispatch('WRITE_MESSAGE', {sender: creador[0], message: this.mensaje})
+      if (this.mensaje.length > 0) {
+        let creador = await web3.eth.getAccounts()
+        this.mensaje = null
+        this.$store.dispatch('WRITE_MESSAGE', {sender: creador[0], message: this.mensaje})
+      } else {
+        this.msgError = true
+      }
     }
   }
 }

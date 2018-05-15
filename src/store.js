@@ -6,7 +6,6 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    valor: 1,
     messages: [],
     numeroMensajes: 0
   },
@@ -18,9 +17,6 @@ const store = new Vuex.Store({
         messages.push(await mensajes.methods.mensajes(i).call())
       }
       commit('SET_MESSAGE', {messages: messages})
-    },
-    FIRST_ACTION ({commit}) {
-      commit('FIRST_MUTATION')
     },
     async WRITE_MESSAGE ({commit}, payload) {
       console.log(payload)
@@ -39,17 +35,11 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    FIRST_MUTATION (state) {
-      state.valor = 2
-    },
     async SET_MESSAGE (state, {messages}) {
       state.messages = messages
     }
   },
   getters: {
-    getValor (state) {
-      return state.valor
-    },
     getMessages (state) {
       return state.messages
     }
