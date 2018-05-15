@@ -4,7 +4,7 @@
     <input-app></input-app>
     <hr />
     <div id="contenido">
-      <div id="mensaje" v-for="(item, index) in mensajes" :key="index">
+      <div id="mensaje" v-for="(item, index) in getMessages" :key="index">
         Creador: {{item.emisor}} - Mensaje: {{item.mensaje}} - Fecha de publicación: {{item.fechaPublicacion}}
       </div>
     </div>
@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import mensajes from './mensajes'
 import HeaderApp from '@/components/Header'
 import InputApp from '@/components/Input'
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'App',
@@ -28,19 +28,12 @@ export default {
       mensajes: []
     }
   },
-  async mounted () {
-    this.getMensajes()
+  mounted () {
+    this.$store.dispatch('LOAD_MESSAGES')
   },
-  methods: {
-    async getMensajes () {
-      this.numeroMensajes = await mensajes.methods.contadorMensajes().call()
-      console.log(this.numeroMensajes)
-      for (let i = 0; i < this.numeroMensajes; i++) {
-        this.mensajes.push(await mensajes.methods.mensajes(i).call())
-      }
-      console.log(this.mensajes)
-    }
-  }
+  computed: mapGetters({
+    getMessages: ['getMessages']
+  })
 }
 </script>
 

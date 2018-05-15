@@ -14,7 +14,6 @@
 
 <script>
 import web3 from '@/web3'
-import mensajes from '@/mensajes'
 
 export default {
   name: 'input-app',
@@ -26,16 +25,7 @@ export default {
   methods: {
     async escribir () {
       let creador = await web3.eth.getAccounts()
-      let _this = this
-      console.log(creador)
-      await mensajes.methods.escribirMensaje(this.mensaje).send({
-        from: creador[0]
-      }).then(function () {
-        _this.mensajes = []
-        _this.getMensajes()
-      }).catch(function (error) {
-        console.log(error)
-      })
+      this.$store.dispatch('WRITE_MESSAGE', {sender: creador[0], message: this.mensaje})
     }
   }
 }
