@@ -27,8 +27,8 @@ export default {
     async escribir () {
       if (this.mensaje.length > 0) {
         let creador = await web3.eth.getAccounts()
-        this.mensaje = null
         this.$store.dispatch('WRITE_MESSAGE', {sender: creador[0], message: this.mensaje})
+        this.mensaje = null
       } else {
         this.msgError = true
       }
