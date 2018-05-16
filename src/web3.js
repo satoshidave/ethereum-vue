@@ -1,12 +1,12 @@
 import Web3 from 'web3'
 
-var web3
-const web3Instance = new Web3(window.web3)
-if (web3Instance.currentProvider !== null) {
-  web3 = new Web3(window.web3.currentProvider)
+const web3 = new Web3(window.web3)
+var provider
+if (web3.currentProvider) {
+  provider = new Web3(web3.currentProvider)
 } else {
-  console.log('web3 no está instalado.')
-  web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+  console.log('No web3? You should consider trying MetaMask!')
+  provider = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
 }
 
-export default web3
+export default provider
