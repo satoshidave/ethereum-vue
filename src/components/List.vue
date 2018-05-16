@@ -13,8 +13,8 @@
             </v-flex>
           </v-layout>
         </v-container>
-        <div class="text-xs-center">
-          <v-pagination :length="messagesQty / 5 > Math.round(messagesQty / 5) ? Math.round(messagesQty / 5) + 1 : Math.round(messagesQty / 5)" v-model="page" @click="loadPage()">
+        <div class="text-xs-center pb-3">
+          <v-pagination color="grey darken-1 white--text" :length="messagesQty / 5 > Math.round(messagesQty / 5) ? Math.round(messagesQty / 5) + 1 : Math.round(messagesQty / 5)" v-model="page" @click="loadPage()">
           </v-pagination>
         </div>
       </v-card>
