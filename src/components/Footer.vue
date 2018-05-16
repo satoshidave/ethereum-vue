@@ -1,5 +1,5 @@
 <template>
-  <v-footer height="auto">
+  <v-footer height="auto" absolute>
     <v-card flat tile class="flex">
       <v-card-title class="teal white--text">
         <strong class="subheading">Más contenido en mis Redes Sociales!</strong>
