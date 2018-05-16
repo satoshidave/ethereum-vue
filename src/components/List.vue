@@ -5,16 +5,16 @@
         <v-container fluid>
           <v-layout row wrap>
             <v-flex xs12>
-              <v-card color="grey darken-1" class="white--text mb-3 pa-3 elevation-5" v-for="(item, index) in messages" :key="index">
+              <v-card v-show="index > lowerItems && index <= upperItems" color="grey darken-1" class="white--text mb-3 pa-3 elevation-5" v-for="(item, index) in messages" :key="index">
                 <div><b>Creador: </b>{{item.emisor}}</div>
                 <div class="headline">{{item.mensaje}}</div>
-                <div><b>Fecha de publicación: {{messagesQty}} </b>{{item.fechaPublicacion}}</div>
+                <div><b>Fecha de publicación: {{Math.round(messagesQty / 5)}} </b>{{item.fechaPublicacion}}</div>
               </v-card>
             </v-flex>
           </v-layout>
         </v-container>
         <div class="text-xs-center">
-          <v-pagination :length="6" v-model="page">
+          <v-pagination :length="messagesQty / 5 > Math.round(messagesQty / 5) ? Math.round(messagesQty / 5) + 1 : Math.round(messagesQty / 5)" v-model="page" @click="loadPage()">
           </v-pagination>
         </div>
       </v-card>
@@ -29,7 +29,15 @@ export default {
   name: 'list-app',
   data () {
     return {
-      page: 1
+      page: 1,
+      lowerItems: -1,
+      upperItems: 4
+    }
+  },
+  watch: {
+    page: function () {
+      this.upperItems = (this.page * 5) - 1
+      this.lowerItems = this.upperItems - 5
     }
   },
   computed: mapGetters({

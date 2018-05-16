@@ -42,7 +42,7 @@ const store = new Vuex.Store({
   },
   getters: {
     getMessages (state) {
-      return state.messages
+      return state.messages.reverse()
     },
     getMessagesQty (state) {
       return state.messagesQty
