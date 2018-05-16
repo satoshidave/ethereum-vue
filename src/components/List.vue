@@ -8,11 +8,15 @@
               <v-card color="grey darken-1" class="white--text mb-3 pa-3 elevation-5" v-for="(item, index) in messages" :key="index">
                 <div><b>Creador: </b>{{item.emisor}}</div>
                 <div class="headline">{{item.mensaje}}</div>
-                <div><b>Fecha de publicación: </b>{{item.fechaPublicacion}}</div>
+                <div><b>Fecha de publicación: {{messagesQty}} </b>{{item.fechaPublicacion}}</div>
               </v-card>
             </v-flex>
           </v-layout>
         </v-container>
+        <div class="text-xs-center">
+          <v-pagination :length="6" v-model="page">
+          </v-pagination>
+        </div>
       </v-card>
     </v-flex>
   </v-layout>
@@ -23,8 +27,14 @@ import {mapGetters} from 'vuex'
 
 export default {
   name: 'list-app',
+  data () {
+    return {
+      page: 1
+    }
+  },
   computed: mapGetters({
-    messages: ['getMessages']
+    messages: ['getMessages'],
+    messagesQty: ['getMessagesQty']
   })
 }
 </script>
