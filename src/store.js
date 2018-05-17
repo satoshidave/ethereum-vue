@@ -7,7 +7,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     messages: [],
-    messagesQty: 0
+    messagesQty: 0,
+    TxHash: ''
   },
   actions: {
     async LOAD_MESSAGES ({commit}) {
@@ -25,6 +26,7 @@ const store = new Vuex.Store({
       }, function (err, transactionHash) {
         if (!err) {
           console.log(transactionHash)
+          commit('SET_TXHASH', {TxHash: transactionHash})
         }
       }).then(async () => {
         let messagesQty = await mensajes.methods.contadorMensajes().call()
@@ -39,9 +41,12 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    async SET_MESSAGE (state, {messages, messagesQty}) {
+    async SET_MESSAGE (state, {messages, messagesQty, TxHash}) {
       state.messages = messages
       state.messagesQty = messagesQty
+    },
+    SET_TXHASH (state, {TxHash}) {
+      state.TxHash = TxHash
     }
   },
   getters: {
@@ -50,6 +55,9 @@ const store = new Vuex.Store({
     },
     getMessagesQty (state) {
       return state.messagesQty
+    },
+    getTxHash (state) {
+      return state.TxHash
     }
   }
 })

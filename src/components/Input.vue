@@ -12,15 +12,21 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-snackbar :color="msgSnackbarColor" :timeout="timeout" top vertical v-model="msgError" >
-      <strong>{{msgSnackbar}}</strong>
-      <v-btn flat color="white" @click.native="msgError = false">Cerrar</v-btn>
+    <v-snackbar :timeout="60000" auto-height :color="msgSnackbarColor" top vertical v-model="msgError" >
+      <div><strong>{{msgSnackbar}}</strong></div>
+      <div v-if="hasTxHash" ><strong>ID de la Transacción: </strong>{{TxHash}}</div>
+      <v-card-actions>
+        <v-btn v-if="hasTxHash" flat color="white" :href="watchTxHash(TxHash)" target="_blank" >Ver Status</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn flat color="white" @click.native="msgError = false">Cerrar</v-btn>
+      </v-card-actions>
     </v-snackbar>
   </div>
 </template>
 
 <script>
 import web3 from '@/web3'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'input-app',
@@ -28,10 +34,20 @@ export default {
     return {
       mensaje: '',
       msgError: false,
-      timeout: 6000,
       msgSnackbar: 'Error desconocido. Por favor contacte con el desarrollador. Gracias.',
-      msgSnackbarColor: 'red',
-      sendPushed: ''
+      msgSnackbarColor: 'error',
+      TxHash: null,
+      hasTxHash: false
+    }
+  },
+  watch: {
+    getTxHash: function () {
+      this.TxHash = this.getTxHash
+      this.msgSnackbar = 'Su mensaje fué enviado. Espere mientras el bloque es minado y aparece su mensaje.'
+      this.msgSnackbarColor = 'green'
+      this.hasTxHash = true
+      this.msgError = true
+      this.mensaje = null
     }
   },
   methods: {
@@ -39,16 +55,19 @@ export default {
       if (this.mensaje.length > 0) {
         let creador = await web3.eth.getAccounts()
         this.$store.dispatch('WRITE_MESSAGE', {sender: creador[0], message: this.mensaje})
-        this.msgSnackbar = 'Su mensaje fué enviado. Espere mientras el bloque es minado y aparece su mensaje.'
-        this.msgSnackbarColor = 'green'
-        this.msgError = true
-        this.mensaje = null
       } else {
         this.msgSnackbar = 'No puede enviar un mensaje vacío. Por favor escriba un mensaje.'
         this.msgSnackbarColor = 'red'
+        this.hasTxHash = false
         this.msgError = true
       }
+    },
+    watchTxHash (TxHash) {
+      return `https://rinkeby.etherscan.io/tx/${TxHash}`
     }
-  }
+  },
+  computed: mapGetters({
+    getTxHash: ['getTxHash']
+  })
 }
 </script>

@@ -8,7 +8,7 @@
               <v-card v-show="index > lowerItems && index <= upperItems" color="grey darken-1" class="white--text mb-3 pa-3 elevation-5" v-for="(item, index) in messages" :key="index">
                 <div><b>Creador: </b>{{item.emisor}}</div>
                 <div class="headline">{{item.mensaje}}</div>
-                <div><b>Fecha de publicación: {{Math.round(messagesQty / 5)}} </b>{{item.fechaPublicacion}}</div>
+                <div><b>Fecha de publicación: </b>{{item.fechaPublicacion}}</div>
               </v-card>
             </v-flex>
           </v-layout>
