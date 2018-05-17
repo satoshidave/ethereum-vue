@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs12 sm8 offset-sm2 mb-3 pl-1 pr-1>
+    <v-flex xs12 sm8 offset-sm2 mb-5 pl-1 pr-1>
       <v-card color="white">
         <v-container fluid>
           <v-layout row wrap>
@@ -8,7 +8,7 @@
               <v-card v-show="index > lowerItems && index <= upperItems" color="grey darken-1" class="white--text mb-3 pa-3 elevation-5" v-for="(item, index) in messages" :key="index">
                 <div><b>Creador: </b>{{item.emisor}}</div>
                 <div class="headline">{{item.mensaje}}</div>
-                <div><b>Fecha de publicación: </b>{{item.fechaPublicacion}}</div>
+                <div><b>Fecha de publicación: </b>{{formatBlocktimestamp(item.fechaPublicacion)}}</div>
               </v-card>
             </v-flex>
           </v-layout>
@@ -24,6 +24,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import moment from 'moment'
 
 export default {
   name: 'list-app',
@@ -38,6 +39,11 @@ export default {
     page: function () {
       this.upperItems = (this.page * 5) - 1
       this.lowerItems = this.upperItems - 5
+    }
+  },
+  methods: {
+    formatBlocktimestamp (blocktimestamp) {
+      return moment(blocktimestamp, 'X').format('DD/MM/YYYY HH:mm')
     }
   },
   computed: mapGetters({
