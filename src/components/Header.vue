@@ -1,27 +1,33 @@
 <template>
-  <v-toolbar color="grey darken-1" dark>
-    <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-menu :nudge-width="100">
-      <v-toolbar-title slot="activator">
-        <span class="is-white" >Libro de Visitas</span>
-        <v-icon dark>arrow_drop_down</v-icon>
-      </v-toolbar-title>
-      <v-list>
-        <v-list-tile v-for="item in items" :key="item" @click="evento()">
-          <v-list-tile-title v-text="item"></v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-menu>
-    <v-spacer></v-spacer>
-    <v-btn icon>
-      <v-icon>search</v-icon>
-    </v-btn>
-    <v-btn icon>
-      <v-icon>favorite</v-icon>
-    </v-btn>
-    <v-btn icon>
-      <v-icon>more_vert</v-icon>
-    </v-btn>
+  <v-toolbar color="grey darken-1" dark app height="auto">
+    <v-layout wrap row>
+      <v-flex xs12 sm6 class="text-xs-center text-sm-left">
+        <div class="title ma-2 pt-2">
+          <span class="is-white" >Libro de Visitas con Vue.JS en la Blockchain</span>
+        </div>
+      </v-flex>
+      <v-flex xs12 sm6 class="text-xs-center text-sm-right">
+        <v-btn icon>
+          <v-icon>search</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>favorite</v-icon>
+        </v-btn>
+        <v-menu>
+          <v-btn slot="activator" flat>
+            <strong>Links útiles</strong>
+            <v-icon>more_vert</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile-content>
+            <v-list-tile v-for="item in items" :key="item" @click="evento()">
+              <v-list-tile-title v-text="item"></v-list-tile-title>
+            </v-list-tile>
+            </v-list-tile-content>
+          </v-list>
+        </v-menu>
+      </v-flex>
+    </v-layout>
   </v-toolbar>
 </template>
 
@@ -31,7 +37,7 @@ export default {
   data () {
     return {
       items: [
-        'All', 'Family', 'Friends', 'Coworkers'
+        'Desde un Desktop', 'Desde un Mobile', 'Faucets de Ether', 'Me brindas un Café?'
       ]
     }
   },
