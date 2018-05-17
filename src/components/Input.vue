@@ -12,6 +12,10 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <v-snackbar :color="msgSnackbarColor" :timeout="timeout" top vertical v-model="msgError" >
+      <strong>{{msgSnackbar}}</strong>
+      <v-btn flat color="white" @click.native="msgError = false">Cerrar</v-btn>
+    </v-snackbar>
   </div>
 </template>
 
@@ -23,7 +27,11 @@ export default {
   data () {
     return {
       mensaje: '',
-      msgError: false
+      msgError: false,
+      timeout: 6000,
+      msgSnackbar: 'Error desconocido. Por favor contacte con el desarrollador. Gracias.',
+      msgSnackbarColor: 'red',
+      sendPushed: ''
     }
   },
   methods: {
@@ -31,8 +39,13 @@ export default {
       if (this.mensaje.length > 0) {
         let creador = await web3.eth.getAccounts()
         this.$store.dispatch('WRITE_MESSAGE', {sender: creador[0], message: this.mensaje})
+        this.msgSnackbar = 'Su mensaje fué enviado. Espere mientras el bloque es minado y aparece su mensaje.'
+        this.msgSnackbarColor = 'green'
+        this.msgError = true
         this.mensaje = null
       } else {
+        this.msgSnackbar = 'No puede enviar un mensaje vacío. Por favor escriba un mensaje.'
+        this.msgSnackbarColor = 'red'
         this.msgError = true
       }
     }

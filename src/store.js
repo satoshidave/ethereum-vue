@@ -22,6 +22,10 @@ const store = new Vuex.Store({
       console.log(payload)
       await mensajes.methods.escribirMensaje(payload.message).send({
         from: payload.sender
+      }, function (err, transactionHash) {
+        if (!err) {
+          console.log(transactionHash)
+        }
       }).then(async () => {
         let messagesQty = await mensajes.methods.contadorMensajes().call()
         let messages = []
