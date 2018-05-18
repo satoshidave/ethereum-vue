@@ -20,7 +20,8 @@ export default {
       icons: [
         'fab fa-facebook',
         'fab fa-twitter',
-        'fab fa-instagram'
+        'fab fa-instagram',
+        'fab fa-github'
       ]
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar color="grey darken-1" dark app height="auto">
+  <v-toolbar color="grey darken-1 px-2" dark height="auto" absolute>
     <v-layout wrap row>
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
         <div class="title ma-2 pt-2">
@@ -8,10 +8,10 @@
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
         <v-btn icon>
-          <v-icon>search</v-icon>
+          <v-icon>home</v-icon>
         </v-btn>
         <v-btn icon>
-          <v-icon>favorite</v-icon>
+          <v-icon>search</v-icon>
         </v-btn>
         <v-menu>
           <v-btn slot="activator" flat>

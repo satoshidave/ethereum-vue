@@ -1,7 +1,7 @@
 <template>
   <div class="text-xs-center mt-5 mb-3">
-    <v-container fluid >
-      <v-layout row wrap justify-center mt-5>
+    <v-container fluid>
+      <v-layout row wrap justify-center mt-5 >
         <v-flex xs12 sm6>
           <v-text-field v-model="mensaje" label="Ingrese su mensaje..." placeholder="Tenga en cuenta que quedará guardado permanentemente en la Blockchain.">
           </v-text-field>
