@@ -7,7 +7,7 @@
         </div>
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn icon>
+        <v-btn icon @click="goHome()" >
           <v-icon>home</v-icon>
         </v-btn>
         <v-btn icon>
@@ -20,8 +20,8 @@
           </v-btn>
           <v-list>
             <v-list-tile-content>
-            <v-list-tile v-for="item in items" :key="item" @click="evento()">
-              <v-list-tile-title v-text="item"></v-list-tile-title>
+            <v-list-tile v-for="item in items" :key="item.name" @click="evento(item.path)">
+              <v-list-tile-title v-text="item.name"></v-list-tile-title>
             </v-list-tile>
             </v-list-tile-content>
           </v-list>
@@ -37,13 +37,35 @@ export default {
   data () {
     return {
       items: [
-        'Desde un Desktop', 'Desde un Mobile', 'Faucets de Ether', 'Me brindas un Café?'
+        {
+          name: 'Desde un Desktop',
+          icon: '',
+          path: '#'
+        },
+        {
+          name: 'Desde un Mobile',
+          icon: '',
+          path: '#'
+        },
+        {
+          name: 'Faucets de Ether',
+          icon: '',
+          path: '#'
+        },
+        {
+          name: 'Me brindas un Café?',
+          icon: '',
+          path: '/about'
+        }
       ]
     }
   },
   methods: {
-    evento () {
-      console.log('soy un evento')
+    evento (path) {
+      this.$router.push(path)
+    },
+    goHome () {
+      this.$router.push('/')
     }
   }
 }

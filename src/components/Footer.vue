@@ -1,5 +1,5 @@
 <template>
-  <v-footer height="auto">
+  <v-footer height="auto bottom">
     <v-card flat tile class="flex">
       <v-card-title class="teal white--text">
         <strong class="subheading">Más contenido en mis Redes Sociales!</strong>
@@ -22,7 +22,8 @@ export default {
         'fab fa-twitter',
         'fab fa-instagram',
         'fab fa-github'
-      ]
+      ],
+      mobile: null
     }
   }
 }

@@ -1,22 +1,25 @@
 <template>
   <div>
     <header-app></header-app>
-    <coffee></coffee>
+    <input-app></input-app>
+    <list-app></list-app>
     <footer-app></footer-app>
   </div>
 </template>
 
 <script>
 import HeaderApp from '@/components/Header'
+import InputApp from '@/components/Input'
+import ListApp from '@/components/List'
 import FooterApp from '@/components/Footer'
-import Coffee from '@/components/Coffee'
 
 export default {
-  name: 'about',
+  name: 'home',
   components: {
     HeaderApp,
-    FooterApp,
-    Coffee
+    InputApp,
+    ListApp,
+    FooterApp
   }
 }
 </script>
