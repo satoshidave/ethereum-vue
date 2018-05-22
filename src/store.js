@@ -20,12 +20,12 @@ const store = new Vuex.Store({
       commit('SET_MESSAGE', {messages: messages, messagesQty: messagesQty})
     },
     async WRITE_MESSAGE ({commit}, payload) {
-      console.log(payload)
+      /* console.log(payload) */
       await mensajes.methods.escribirMensaje(payload.message).send({
         from: payload.sender
       }, function (err, transactionHash) {
         if (!err) {
-          console.log(transactionHash)
+          /* console.log(transactionHash) */
           commit('SET_TXHASH', {TxHash: transactionHash})
         }
       }).then(async () => {
@@ -36,7 +36,8 @@ const store = new Vuex.Store({
         }
         commit('SET_MESSAGE', {messages: messages, messagesQty: messagesQty})
       }).catch((error) => {
-        console.log(error)
+        throw error
+        /* console.log(error) */
       })
     }
   },

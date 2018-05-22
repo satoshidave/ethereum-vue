@@ -8,13 +8,16 @@
           </span>
         </v-flex>
         <v-flex xs12 sm6 lg3 pa-3 v-for="wallet in wallets" :key="wallet.name">
-          <v-card color="white">
+          <v-card color="white" height="100%">
             <v-card-media :src="wallet.imgHeader" height="150px">
             </v-card-media>
             <v-card-title primary-title>
               <template>
                 <v-layout row wrap class="text-xs-center">
-                  <v-flex class="xs12 mb-2"><h3 class="headline mb-0">{{wallet.name}}</h3></v-flex>
+                  <v-flex class="xs12 mb-2">
+                    <h3 class="headline mb-0">{{wallet.name}}</h3>
+                    <span>{{wallet.note}}</span>
+                  </v-flex>
                   <v-flex class="xs12">
                     <qr-code style="text-align: -webkit-center;" :text="wallet.address"></qr-code>
                   </v-flex>
@@ -65,25 +68,25 @@ export default {
           name: 'Bitcoin',
           address: '3LkPX7Tcy4FYvYkXE6Hjf2v4xGBjLduVtA',
           imgHeader: '/static/images/bitcoin-card-header.jpg',
-          note: null
+          note: 'El papa de los pollitos. Unos satoshis no vendrían nada mal :3'
         },
         {
           name: 'Ethereum',
           address: '0xDb6C6dC2A8bA7D5B9D5DEf6ef2E519D38Da6E868',
           imgHeader: '/static/images/ethereum-card-header.jpg',
-          note: 'Los Tokens también son bienvenidos :-)'
+          note: 'No importa si es de la Testnet, pero si es de la Mainnet mejor! Los Tokens también son bienvenidos :-)'
         },
         {
           name: 'Litecoin',
           address: 'MBP9uAu2Qi3mQQELXL2KofRvZTxVPfkcZr',
           imgHeader: '/static/images/litecoin-card-header.jpg',
-          note: null
+          note: 'Tanto Charlie como yo te lo agradeceriamos :D'
         },
         {
           name: 'Dogecoin',
           address: 'DCcbLeF1srfU1LptZAKGbMfLVTUacyHq98',
           imgHeader: '/static/images/dogecoin-card-header.jpg',
-          note: 'Porque amamos los animales <3'
+          note: 'Le tenemos amor a esta criptomeme y a su perrito que a pesar de los años sigue dando que hablar <3'
         }
       ]
     }
