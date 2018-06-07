@@ -1,12 +1,12 @@
 <template>
   <v-toolbar color="grey darken-1 px-2" dark height="auto" absolute>
     <v-layout wrap row>
-      <v-flex xs12 sm6 class="text-xs-center text-sm-left">
+      <v-flex xs12 sm5 offset-sm1 class="text-xs-center text-sm-left">
         <div class="title ma-2 pt-2">
-          <span class="is-white" >Libro de Visitas con Vue.JS en la Blockchain</span>
+          <span class="is-white" >Ethereum Guestbook</span>
         </div>
       </v-flex>
-      <v-flex xs12 sm6 class="text-xs-center text-sm-right">
+      <v-flex xs12 sm5 class="text-xs-center text-sm-right">
         <v-btn icon @click="goHome()" >
           <v-icon>home</v-icon>
         </v-btn>
@@ -15,7 +15,7 @@
         </v-btn>
         <v-menu>
           <v-btn slot="activator" flat>
-            <strong>Links útiles</strong>
+            <strong>Links</strong>
             <v-icon>more_vert</v-icon>
           </v-btn>
           <v-list>
@@ -38,22 +38,12 @@ export default {
     return {
       items: [
         {
-          name: 'Desde un Desktop',
+          name: 'Ether Test Faucet',
           icon: '',
-          path: '#'
+          path: 'http://rinkeby-faucet.com/'
         },
         {
-          name: 'Desde un Mobile',
-          icon: '',
-          path: '#'
-        },
-        {
-          name: 'Faucets de Ether',
-          icon: '',
-          path: '#'
-        },
-        {
-          name: 'Me brindas un Café?',
+          name: 'Give me a coffee',
           icon: '',
           path: '/about'
         }
@@ -62,7 +52,11 @@ export default {
   },
   methods: {
     evento (path) {
-      this.$router.push(path)
+      if (path === 'http://rinkeby-faucet.com/') {
+        window.open(path, '_blank')
+      } else {
+        this.$router.push(path)
+      }
     },
     goHome () {
       this.$router.push('/')
