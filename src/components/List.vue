@@ -6,9 +6,9 @@
           <v-layout row wrap>
             <v-flex xs12>
               <v-card v-show="index > lowerItems && index <= upperItems" color="grey darken-1" class="white--text mb-3 pa-3 elevation-5" v-for="(item, index) in messages" :key="index">
-                <div style="contain:content;" ><b>Creador: </b>{{item.emisor}}</div>
+                <div style="contain:content;" ><b>Address: </b>{{item.emisor}}</div>
                 <div class="headline">{{item.mensaje}}</div>
-                <div><b>Fecha de publicación: </b>{{formatBlocktimestamp(item.fechaPublicacion)}}</div>
+                <div><b>Date: </b>{{formatBlocktimestamp(item.fechaPublicacion)}}</div>
               </v-card>
             </v-flex>
           </v-layout>

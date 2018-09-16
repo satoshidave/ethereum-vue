@@ -3,7 +3,7 @@
     <v-layout wrap row>
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
         <div class="title ma-2 pt-2">
-          <span class="is-white" >Libro de Visitas con Vue.JS en la Blockchain</span>
+          <span class="is-white" >Ether-Vue Guestbook</span>
         </div>
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
@@ -15,7 +15,7 @@
         </v-btn>
         <v-menu>
           <v-btn slot="activator" flat>
-            <strong>Links útiles</strong>
+            <strong>Links</strong>
             <v-icon>more_vert</v-icon>
           </v-btn>
           <v-list>
@@ -38,22 +38,22 @@ export default {
     return {
       items: [
         {
-          name: 'Desde un Desktop',
+          name: 'Wallets for Desktop',
           icon: '',
           path: '#'
         },
         {
-          name: 'Desde un Mobile',
+          name: 'Wallets for Mobile',
           icon: '',
           path: '#'
         },
         {
-          name: 'Faucets de Ether',
+          name: 'Ether Faucets',
           icon: '',
           path: '#'
         },
         {
-          name: 'Me brindas un Café?',
+          name: 'Give me a Coffee',
           icon: '',
           path: '/about'
         }
