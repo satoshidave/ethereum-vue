@@ -21,14 +21,15 @@ export default {
         {name: 'Facebook', icon: 'fab fa-facebook', link: '#'},
         {name: 'Twitter', icon: 'fab fa-twitter', link: '#'},
         {name: 'Instagram', icon: 'fab fa-instagram', link: '#'},
+        {name: 'LinkedIn', icon: 'fab fa-linkedin', link: 'https://www.linkedin.com/in/daveporras'},
         {name: 'Facebook', icon: 'fab fa-github', link: 'https://github.com/daveporras'}
       ],
       mobile: null
     }
   },
   methods: {
-    goTo (url) {
-      if (url !== '#') window.open(url, '_blank')
+    goTo (link) {
+      if (link !== '#') window.open(link, '_blank')
     }
   }
 }
