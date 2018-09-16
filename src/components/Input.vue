@@ -5,7 +5,7 @@
         <v-flex xs12 sm6>
           <v-text-field v-model="mensaje" label="Type your message..." placeholder="Your message will be stored permanently in the Blockchain.">
           </v-text-field>
-          <v-btn inherit color="grey darken-1" class="white--text" @click="escribir()" dark>
+          <v-btn :disabled="sendDisabled" :flat="sendDisabled" inherit color="grey darken-1" class="white--text" @click="escribir()" dark>
             <v-icon>send</v-icon>
             <strong>&nbsp;Send</strong>
           </v-btn>
@@ -37,7 +37,8 @@ export default {
       msgSnackbar: 'Unknown Error. Please contact to the developer. Thanks.',
       msgSnackbarColor: 'error',
       TxHash: null,
-      hasTxHash: false
+      hasTxHash: false,
+      sendDisabled: true
     }
   },
   watch: {
@@ -48,6 +49,13 @@ export default {
       this.hasTxHash = true
       this.msgError = true
       this.mensaje = null
+    },
+    mensaje: function () {
+      if (!this.mensaje) {
+        this.sendDisabled = true
+      } else {
+        this.sendDisabled = false
+      }
     }
   },
   methods: {

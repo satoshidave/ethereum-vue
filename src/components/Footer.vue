@@ -4,8 +4,8 @@
       <v-card-title class="teal white--text">
         <strong class="subheading">More in my social networks!</strong>
         <v-spacer></v-spacer>
-        <v-btn v-for="(icon, index) in icons" :key="index" icon class="mx-3" @click="goTo(icon.link)" >
-          <v-icon dark >{{icon.icon}}</v-icon>
+        <v-btn v-for="(icon, index) in icons" :key="index" icon class="mx-3 white--text" @click="goTo(icon.link)" >
+          <v-icon>{{icon.icon}}</v-icon>
         </v-btn>
       </v-card-title>
     </v-card>

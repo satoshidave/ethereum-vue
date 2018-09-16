@@ -8,5 +8,5 @@ button {
 
 .menu__content.menuable__content__active {
   top: 0 !important;
-  left: 0 !important;
+  left: -80px !important;
 }

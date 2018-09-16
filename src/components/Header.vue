@@ -20,9 +20,9 @@
           </v-btn>
           <v-list>
             <v-list-tile-content>
-            <v-list-tile v-for="item in items" :key="item.name" @click="evento(item.path)">
-              <v-list-tile-title v-text="item.name"></v-list-tile-title>
-            </v-list-tile>
+              <v-list-tile v-for="item in items" :key="item.name" @click="evento(item.path)">
+                <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+              </v-list-tile>
             </v-list-tile-content>
           </v-list>
         </v-menu>
@@ -34,32 +34,30 @@
 <script>
 export default {
   name: 'header-app',
-  data () {
-    return {
-      items: [
-        {
-          name: 'Wallets for Desktop',
-          icon: '',
-          path: '#'
-        },
-        {
-          name: 'Wallets for Mobile',
-          icon: '',
-          path: '#'
-        },
-        {
-          name: 'Ether Faucets',
-          icon: '',
-          path: '#'
-        },
-        {
-          name: 'Give me a Coffee',
-          icon: '',
-          path: '/about'
-        }
-      ]
-    }
-  },
+  data: () => ({
+    items: [
+      {
+        name: 'Wallets for Desktop',
+        icon: '',
+        path: '/desktop'
+      },
+      {
+        name: 'Wallets for Mobile',
+        icon: '',
+        path: '#'
+      },
+      {
+        name: 'Ether Faucets',
+        icon: '',
+        path: '#'
+      },
+      {
+        name: 'Give me a Coffee',
+        icon: '',
+        path: '/about'
+      }
+    ]
+  }),
   methods: {
     evento (path) {
       this.$router.push(path)
