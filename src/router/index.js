@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import About from '@/views/About'
 import Desktop from '@/views/Desktop'
+import Mobile from '@/views/Mobile'
+import Faucet from '@/views/Faucet'
 
 Vue.use(Router)
 
@@ -22,6 +24,16 @@ export default new Router({
       path: '/desktop',
       name: 'Desktop',
       component: Desktop
+    },
+    {
+      path: '/mobile',
+      name: 'Mobile',
+      component: Mobile
+    },
+    {
+      path: '/faucet',
+      name: 'Faucet',
+      component: Faucet
     }
   ]
 })

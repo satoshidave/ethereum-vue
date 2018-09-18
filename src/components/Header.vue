@@ -44,12 +44,12 @@ export default {
       {
         name: 'Wallets for Mobile',
         icon: '',
-        path: '#'
+        path: '/mobile'
       },
       {
         name: 'Ether Faucets',
         icon: '',
-        path: '#'
+        path: '/faucet'
       },
       {
         name: 'Give me a Coffee',

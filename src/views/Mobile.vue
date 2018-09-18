@@ -5,7 +5,7 @@
       <v-container fluid>
         <v-layout row wrap>
           <v-flex xs10 offset-xs1>
-            <span subheading>To send messages in our app from your web browser, you have the follow alternatives:</span>
+            <span subheading>To send messages in our application from your mobile device, you have many alternatives, but we select the following ones because they allow you to switch between Mainnet to Testnet (Rinkeby, Ropsten ...) and vice versa:</span>
           </v-flex>
         </v-layout>
         <v-layout row wrap>
@@ -42,23 +42,23 @@ import HeaderApp from '@/components/Header'
 import FooterApp from '@/components/Footer'
 
 export default {
-  name: 'Desktop',
+  name: 'Mobile',
   components: {
     HeaderApp,
     FooterApp
   },
   data: () => ({
     wallets: [{
-      name: 'Metamask for Chrome',
-      description: 'This Chrome extension lets you to create a new Ethereum Wallet in your Google Chrome browser.',
-      link: 'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn',
-      image: '/static/images/metamask-chrome-card.png'
+      name: 'Cipher Browser',
+      description: ' Cipher allows you to interact with dapps powered by Ethereum on your mobile device and makes it easy for you to securely store, send and receive Ether and ERC20 tokens.',
+      link: 'https://www.cipherbrowser.com/',
+      image: '/static/images/cypher-card-header.jpg'
     },
     {
-      name: 'Brave Browser',
-      description: 'This browser has Metamask included by default. Brave improves your browser experience blocking content and script undesirables. Brave belongs to Basic Attention Token (BAT) project.',
-      link: 'https://brave.com/download/',
-      image: '/static/images/lionbot.png'
+      name: 'Trust Wallet',
+      description: `Trust Wallet is a secure wallet for Ethereum, ERC20 and ERC223 tokens. Trust allows you to interact with decentralized applications (DApp) directly from the app. Trust Wallet is Binance's Official Wallet.`,
+      link: 'https://trustwalletapp.com/',
+      image: '/static/images/trust-card-header.jpg'
     }]
   }),
   methods: {
