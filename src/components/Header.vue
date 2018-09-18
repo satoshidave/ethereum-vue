@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="grey darken-1 px-2" dark height="auto" absolute>
+    <v-toolbar color="grey darken-1 px-2" dark absolute>
       <v-layout wrap row>
         <v-flex xs12 sm6 class="text-xs-center text-sm-left">
           <div class="title ma-2 pt-2">
